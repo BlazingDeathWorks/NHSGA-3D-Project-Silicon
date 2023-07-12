@@ -52,6 +52,8 @@ public class PrefabGunScript : MonoBehaviour
 
     private void Shoot()
     {
+        Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward*100f, Color.red,0.5f);
+
         GameObject blt = null;
         foreach(GameObject bullet in bulletList)
         {
@@ -62,7 +64,10 @@ public class PrefabGunScript : MonoBehaviour
             return;
         }
         blt.transform.position = gunBarrelTransform.position;
-        blt.GetComponent<Bullet>().movementVector = Camera.main.transform.forward.normalized;
+        RaycastHit rayHit;
+        Physics.Raycast(Camera.main.transform.position,Camera.main.transform.forward*100, out rayHit);
+        if (rayHit.collider != null) blt.GetComponent<Bullet>().movementVector = (rayHit.point - gunBarrelTransform.position).normalized;
+        else blt.GetComponent<Bullet>().movementVector = Camera.main.transform.forward;
         blt.SetActive(true);
     }
 }

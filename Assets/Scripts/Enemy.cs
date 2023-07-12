@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     private Transform destination;
     private NavMeshAgent agent;
 
+    
 
     private void Awake()
     {
