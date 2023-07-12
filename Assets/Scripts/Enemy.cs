@@ -22,13 +22,7 @@ public class Enemy : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        //Testing
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            StartCoroutine("HitFlash");
-        }
-
+    { 
         if (destination == null) return;
 
         agent.SetDestination(destination.position);
