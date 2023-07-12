@@ -7,9 +7,9 @@ public class Trap : MonoBehaviour
     //Needs change if you want to add player health
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.TryGetComponent(out PlayerHealth playerHealth))
         {
-            SceneController.Instance.ReloadScene();
+            playerHealth.TakeDamage();
         }
     }
 }
