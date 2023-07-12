@@ -5,18 +5,30 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] private Material flashMaterial;
+    [SerializeField] private float hitFlashTime = 0.2f;
     private Transform destination;
     private NavMeshAgent agent;
+    private Material originalMaterial;
+    private MeshRenderer meshRenderer;
 
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+        meshRenderer = GetComponent<MeshRenderer>();
+        originalMaterial = meshRenderer.material;
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Testing
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            StartCoroutine("HitFlash");
+        }
+
         if (destination == null) return;
 
         agent.SetDestination(destination.position);
@@ -26,6 +38,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent(out PlayerHealth playerHealth))
         {
+            StartCoroutine("HitFlash");
             playerHealth.TakeDamage();
         }
     }
@@ -46,5 +59,12 @@ public class Enemy : MonoBehaviour
             destination = null;
             agent.isStopped = true;
         }
+    }
+
+    private IEnumerator HitFlash()
+    {
+        meshRenderer.material = flashMaterial;
+        yield return new WaitForSecondsRealtime(hitFlashTime);
+        meshRenderer.material = originalMaterial;
     }
 }
