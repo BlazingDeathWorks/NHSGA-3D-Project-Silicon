@@ -119,7 +119,7 @@ public class FPSMovement : MonoBehaviour
         if (kb.dKey.isPressed) moveDir += Vector3.right;
         animator.SetBool("isWalking", moveDir.magnitude > 0.5f);
         moveDir = Quaternion.AngleAxis(yDir, Vector3.up) * moveDir;
-        parentRb.MovePosition(parentRb.position + moveDir * moveSpeed * 0.001f * (animator.GetBool("isFiring") ? firingSpeedMovementMulti : 1f));
+        parentRb.MovePosition(parentRb.position + moveDir * moveSpeed * 0.001f * (animator.GetBool("isFiring") ? firingSpeedMovementMulti : 1f)*(kb.shiftKey.isPressed?1.5f:1f));
 
     }
 }
