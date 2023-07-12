@@ -5,20 +5,12 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private Material flashMaterial; //Take this
-    [SerializeField] private float hitFlashTime = 0.2f; //Take this
     private Transform destination;
     private NavMeshAgent agent;
-    private Material originalMaterial;//Take this
-    private MeshRenderer meshRenderer;//Take this
-
-    
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-        meshRenderer = GetComponent<MeshRenderer>();
-        originalMaterial = meshRenderer.material;//Take this
     }
 
     void Update()
@@ -32,7 +24,6 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent(out PlayerHealth playerHealth))
         {
-            StartCoroutine("HitFlash");//Take this
             playerHealth.TakeDamage();
         }
     }
@@ -53,13 +44,5 @@ public class Enemy : MonoBehaviour
             destination = null;
             agent.isStopped = true;
         }
-    }
-
-    //Take this method
-    private IEnumerator HitFlash()
-    {
-        meshRenderer.material = flashMaterial;
-        yield return new WaitForSecondsRealtime(hitFlashTime);
-        meshRenderer.material = originalMaterial;
     }
 }
