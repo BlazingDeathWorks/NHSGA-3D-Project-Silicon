@@ -62,8 +62,8 @@ public class FPSMovement : MonoBehaviour
         if (kb.dKey.isPressed) moveDir += Vector3.right;
         animator.SetBool("isWalking",moveDir.magnitude > 0.5f);
         moveDir = Quaternion.AngleAxis(yDir, Vector3.up) * moveDir;
-        parentRb.MovePosition(parentRb.transform.position+moveDir * moveSpeed * Time.deltaTime*(animator.GetBool("isFiring")? firingSpeedMovementMulti: 1f));
-
+        //parentRb.MovePosition(parentRb.position+moveDir * moveSpeed * Time.deltaTime*(animator.GetBool("isFiring")? firingSpeedMovementMulti: 1f));
+        //parentRb.AddForce(moveDir * moveSpeed * Time.deltaTime * (animator.GetBool("isFiring") ? firingSpeedMovementMulti : 1f));
         if (kb.escapeKey.wasPressedThisFrame)
         {
             if (Cursor.lockState == CursorLockMode.Locked)
@@ -88,6 +88,38 @@ public class FPSMovement : MonoBehaviour
         transform.LookAt(pivotTransform);
        // gunTransform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, transform.rotation.z);
 
+
+    }
+    /*private void FixedUpdate()
+    {
+
+        kb = Keyboard.current;
+        mouse = Mouse.current;
+
+        Vector3 moveDir = Vector3.zero;
+
+        if (kb.wKey.isPressed) moveDir += Vector3.forward;
+        if (kb.sKey.isPressed) moveDir -= Vector3.forward;
+        if (kb.aKey.isPressed) moveDir -= Vector3.right;
+        if (kb.dKey.isPressed) moveDir += Vector3.right;
+        moveDir = Quaternion.AngleAxis(yDir, Vector3.up) * moveDir;
+        parentRb.velocity = new Vector3(moveDir.x * moveSpeed * Time.deltaTime * (animator.GetBool("isFiring") ? firingSpeedMovementMulti : 1f), parentRb.velocity.x, moveDir.z * moveSpeed * Time.deltaTime * (animator.GetBool("isFiring") ? firingSpeedMovementMulti : 1f));
+
+    }*/
+    private void FixedUpdate()
+    {
+        kb = Keyboard.current;
+        mouse = Mouse.current;
+
+        Vector3 moveDir = Vector3.zero;
+
+        if (kb.wKey.isPressed) moveDir += Vector3.forward;
+        if (kb.sKey.isPressed) moveDir -= Vector3.forward;
+        if (kb.aKey.isPressed) moveDir -= Vector3.right;
+        if (kb.dKey.isPressed) moveDir += Vector3.right;
+        animator.SetBool("isWalking", moveDir.magnitude > 0.5f);
+        moveDir = Quaternion.AngleAxis(yDir, Vector3.up) * moveDir;
+        parentRb.MovePosition(parentRb.position + moveDir * moveSpeed * 0.001f * (animator.GetBool("isFiring") ? firingSpeedMovementMulti : 1f));
 
     }
 }
