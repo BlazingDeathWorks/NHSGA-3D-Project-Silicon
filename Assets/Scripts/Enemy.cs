@@ -22,6 +22,14 @@ public class Enemy : MonoBehaviour
         agent.SetDestination(destination.position);
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.TryGetComponent(out PlayerHealth playerHealth))
+        {
+            playerHealth.TakeDamage();
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
