@@ -7,10 +7,12 @@ public class Enemy : MonoBehaviour
 {
     private Transform destination;
     private NavMeshAgent agent;
+    private EnemyHealth health;
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+        health = GetComponent<EnemyHealth>();
     }
 
     void Update()
@@ -22,7 +24,7 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.TryGetComponent(out PlayerHealth playerHealth))
+        if (health.health>0&&collision.gameObject.TryGetComponent(out PlayerHealth playerHealth))
         {
             playerHealth.TakeDamage();
         }

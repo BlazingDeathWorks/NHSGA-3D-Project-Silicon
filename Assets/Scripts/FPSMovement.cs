@@ -25,6 +25,17 @@ public class FPSMovement : MonoBehaviour
     private float timeOfLastJump;
     [SerializeField]private float rayLength;
 
+    [Header("Crouching")]
+    public BoxCollider playerCollider;
+    [SerializeField]private Vector3 crouchPivot;
+    [SerializeField] private Vector3 standardPivot;
+
+    [SerializeField] private Vector3 crochColliderOffset;
+    [SerializeField] private Vector3 standardColliderOffset;
+
+    [SerializeField] private Vector3 crouchColliderSize;
+    [SerializeField] private Vector3 standardColliderSize;
+
     [Tooltip("Set the character which this camera is meant to follow AND is a child of")]
     public Transform parentTransform;
     public Transform pivotTransform;
@@ -86,7 +97,20 @@ public class FPSMovement : MonoBehaviour
         pivotTransform.transform.rotation = Quaternion.Euler(xDir, yDir,pivotTransform.transform.rotation.z);
 
         transform.LookAt(pivotTransform);
-       // gunTransform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, transform.rotation.z);
+
+        if (kb.ctrlKey.isPressed)
+        {
+            pivotTransform.localPosition = crouchPivot;
+            playerCollider.size = crouchColliderSize;
+            playerCollider.center = crochColliderOffset;
+        }
+        else
+        {
+            pivotTransform.localPosition = standardPivot;
+            playerCollider.size = standardColliderSize;
+            playerCollider.center = standardColliderOffset;
+        }
+        // gunTransform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, transform.rotation.z);
 
 
     }

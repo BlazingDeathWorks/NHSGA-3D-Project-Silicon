@@ -7,10 +7,11 @@ public class FrontBackPlatform : MonoBehaviour
     [SerializeField] [Range(0, 30)] private float speed = 1;
     private List<Vector3> positions = new List<Vector3>();
     private int index;
-    private int indexIncrement = -1;
+    private int indexIncrement = 1;
 
     private void Awake()
     {
+        index = 0;
         //Platform's current position is first element
         positions.Add(transform.position);
         while (transform.childCount > 0)
@@ -25,12 +26,13 @@ public class FrontBackPlatform : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, positions[index], speed * Time.deltaTime);
 
-        if (Vector2.Distance(transform.position, positions[index]) != 0) return;
+        if (Vector3.Distance(transform.position, positions[index]) >= 0.1f) return;
 
-        if (index >= positions.Count - 1 || index <= 0)
+        index += indexIncrement;
+
+        if (index >= positions.Count-1 || index <= 0)
         {
             indexIncrement *= -1;
         }
-        index += indexIncrement;
     }
 }

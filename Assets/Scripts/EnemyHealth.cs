@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyHealth : MonoBehaviour
 {
-    [SerializeField] private int health = 3;
+    [SerializeField] public int health = 3;
     [SerializeField] private Material flashMaterial; 
     [SerializeField] private float hitFlashTime = 0.05f;
     private Rigidbody rb;
@@ -34,6 +34,8 @@ public class EnemyHealth : MonoBehaviour
         if (health == 0)
         {
             GetComponent<MeshRenderer>().material = deadMaterial;
+
+            
             GetComponent<Rigidbody>().useGravity = true;
             GetComponent<NavMeshAgent>().enabled = false;
             GetComponent<Enemy>().enabled = false;
@@ -45,6 +47,6 @@ public class EnemyHealth : MonoBehaviour
     {
         meshRenderer.material = flashMaterial;
         yield return new WaitForSecondsRealtime(hitFlashTime);
-        meshRenderer.material = originalMaterial;
+        meshRenderer.material = health>0?originalMaterial:deadMaterial;
     }
 }

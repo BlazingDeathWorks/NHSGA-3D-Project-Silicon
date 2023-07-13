@@ -10,6 +10,8 @@ public class Trap : MonoBehaviour
         if (other.TryGetComponent(out PlayerHealth playerHealth))
         {
             playerHealth.TakeDamage();
+            playerHealth.TakeDamage();
+
         }
     }
 }

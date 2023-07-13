@@ -14,6 +14,8 @@ public class PrefabGunScript : MonoBehaviour
     private float timeOfLastShot;
     [SerializeField] private Transform gunBarrelTransform;
 
+    public LayerMask obstacleLayers;
+
     private bool isFiring=false;
 
     public void OnFire(InputValue value)
@@ -65,8 +67,13 @@ public class PrefabGunScript : MonoBehaviour
         }
         blt.transform.position = gunBarrelTransform.position;
         RaycastHit rayHit;
-        Physics.Raycast(Camera.main.transform.position,Camera.main.transform.forward*100, out rayHit);
-        if (rayHit.collider != null) blt.GetComponent<Bullet>().movementVector = (rayHit.point - gunBarrelTransform.position).normalized;
+        Physics.Raycast(Camera.main.transform.position,Camera.main.transform.forward*100, out rayHit,100f, obstacleLayers);
+
+        if (rayHit.collider != null)
+        {
+            Debug.Log("Ray hitting: " + rayHit.collider.name);
+            blt.GetComponent<Bullet>().movementVector = (rayHit.point - gunBarrelTransform.position).normalized;
+        }
         else blt.GetComponent<Bullet>().movementVector = Camera.main.transform.forward;
         blt.SetActive(true);
     }

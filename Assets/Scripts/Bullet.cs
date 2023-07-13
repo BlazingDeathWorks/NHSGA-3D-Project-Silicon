@@ -9,7 +9,7 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter(Collider collision)
     {
         //Wall layer
-        if (collision.gameObject.layer == 8 || collision.gameObject.layer == 3)
+        if ( collision.gameObject.layer == 3)
         {
             gameObject.SetActive(false);
         }

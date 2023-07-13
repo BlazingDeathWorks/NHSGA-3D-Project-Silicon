@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1596548714}
   - component: {fileID: 1596548715}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Detection Range
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aee00ca92a4a45344bd2f46525954455, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 25
+  health: 5
   flashMaterial: {fileID: 2100000, guid: 6c63d9a99cd1d4ca7997ea2a8be5ba99, type: 2}
   hitFlashTime: 0.05
   deadMaterial: {fileID: 2100000, guid: 83b4d2dcd21edf4489555d21f0e3dc91, type: 2}
