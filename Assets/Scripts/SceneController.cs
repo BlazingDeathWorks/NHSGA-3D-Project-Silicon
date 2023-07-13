@@ -23,6 +23,11 @@ public class SceneController : MonoBehaviour
         Application.Quit();
     }
 
+    public void MainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
     public void ReloadScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

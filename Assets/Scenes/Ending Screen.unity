@@ -174,7 +174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 0.46605062, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.022339106, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -194,7 +194,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: START
+  m_Text: MAIN MENU
 --- !u!222 &7943089
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -312,7 +312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.28406465, g: 0.13915095, b: 0.5566038, a: 1}
+  m_Color: {r: 0.011764707, g: 0.21568629, b: 0.54509807, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -557,7 +557,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.10454342, g: 0.092559636, b: 0.3018868, a: 0}
+  m_BackGroundColor: {r: 0.2179602, g: 0.18632075, b: 0.745283, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -775,7 +775,7 @@ GameObject:
   - component: {fileID: 1189236506}
   - component: {fileID: 1189236505}
   m_Layer: 5
-  m_Name: Title
+  m_Name: Ending Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -834,7 +834,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: TITLE OF THE GAME
+  m_Text: THANKS FOR PLAYING
 --- !u!222 &1189236506
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1016,7 +1016,7 @@ GameObject:
   - component: {fileID: 1787402938}
   - component: {fileID: 1787402937}
   m_Layer: 5
-  m_Name: Start Button
+  m_Name: Main Menu Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1089,7 +1089,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 389287150}
         m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
-        m_MethodName: NextScene
+        m_MethodName: MainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1112,7 +1112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.28406465, g: 0.13915095, b: 0.5566038, a: 1}
+  m_Color: {r: 0, g: 0.22559436, b: 0.5754717, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1188,7 +1188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0.30254555, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.010668278, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
