@@ -18,6 +18,11 @@ public class SceneController : MonoBehaviour
         Instance = this;
     }
 
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
     public void ReloadScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
